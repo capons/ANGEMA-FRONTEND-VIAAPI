@@ -1,0 +1,101 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Engena</title>
+    <link href='http://fonts.googleapis.com/css?family=Cabin:400,700' rel='stylesheet' type='text/css'>
+    <link href="css/engena.css" rel="stylesheet" type="text/css"/>
+    <script src="js/ga.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.validate.min.js"></script>
+    <script src="js/hello.min.js"></script>
+    <script src="js/user.js"></script>
+    <script src="js/mask.js"></script>
+    <script type="text/javascript">
+
+        $.validator.addMethod("con_new_passq", function (value, element) {
+            var pass = $("#c_password").val();
+            if (pass == value) return true;
+            else return false;
+        }, "Please enter the same password as above");
+
+        $.validator.addMethod("check_phoneno", function (value, element) {
+
+            if (value != '') {
+                if (value.length != 10) return false;
+                else return true;
+            }
+            else return false;
+        }, "&uarr; Invalid Phone number");
+    </script>
+
+</head>
+<body>
+<form name="registration" id="registration">
+    <div class="splashBg">
+        <div class="signupbg">
+            <div class="loginMain">
+                <div class="splashlogo"><img src="images/logo_square.png" border="0"/></div>
+                <div class="container">
+                    <div class="formgroup">
+                        <h2>Sign up to Engena</h2>
+                            <div class="notice">
+                                Please fill in the form. Once, you're registered please link your Strava profile in the My Profile section. </div>
+                            </div>
+                        <div class="margin-bot">
+                            <label class="formLable">First Name </label>
+                            <input class="inputForm " name="firstname" id="fname" placeholder="First Name" type="text" required>
+                        </div>
+                        <div class="margin-bot">
+                            <label class="formLable">Last Name </label>
+                            <input class="inputForm" name="lname" id="lname" placeholder="Last Name" type="text" required>
+                        </div>
+                        <div class="margin-bot">
+
+                            <label class="formLable">Contact Number</label>
+                            <input class="inputForm check_phoneno" name="contactno" id="contactno"
+                                   placeholder="Contact Number" type="tel" maxlength="10">
+
+
+                        </div>
+                        <div class="margin-bot">
+                            <label class="formLable">Email Address</label>
+                            <input class="inputForm" name="email" id="email" placeholder="Email Address" type="email" required>
+                        </div>
+                        <div class="margin-bot">
+                            <label class="formLable">Username</label>
+                            <input class="inputForm" name="username" id="username" placeholder="Username " type="text" required>
+                        </div>
+                        <div class="margin-bot">
+                            <label class="formLable">Password</label>
+                            <input class="inputForm" name="password" id="password" placeholder="password" type="password" required>
+                        </div>
+                        <div class="margin-bot">
+                            <label class="formLable con_new_passq">Confirm Password</label>
+                            <input class="inputForm" name="c_password" id="c_password" placeholder="confirm Password" type="password" required>
+                        </div>
+                        <div class="margin-bot">
+                            <div class="margin-bot">
+                                <label class="formLable">&nbsp;</label><em>&nbsp;</em>
+                                <button type="button" class="positive btnLogin" onClick="signup();">Submit</button>
+                            </div>
+                            <span class="formLable" id="error_span" style="width: 100% !important; text-align:right;"></span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <div id="fadex" class="modalDialog"></div>
+   		<div id="modalx"><img id="loader" src="images/spinner.gif"/></div>
+    <div class="clear"></div>
+</div>
+
+</body>
+</html>

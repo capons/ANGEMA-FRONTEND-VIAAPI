@@ -1,0 +1,58 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Engena</title>
+    <script type="text/javascript">
+        var access_token = sessionStorage.getItem("access_token");
+        var u_info =sessionStorage.getItem("reset_email");
+
+        if(u_info != null && u_info!= ''){
+            //console.log(u_info);
+            alert(u_info);
+            sessionStorage.removeItem('reset_email');
+
+        }
+        if (access_token != null && access_token != '') {window.location = "myprofile.html";}
+    </script>
+	<link href='https://fonts.googleapis.com/css?family=Cabin:400italic,400,700,700italic' rel='stylesheet' type='text/css'>
+
+    <link href="css/engena.css" rel="stylesheet" type="text/css"/>
+    <link href="css/auth-buttons.css" rel="stylesheet" type="text/css"/>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/ga.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+
+</head>
+
+<body>
+<div class="splashBg">
+    <div class="loginbg">
+        <div class="loginMain">
+            <div class="splashlogo"><img src="images/logo_square.png" border="0"/></div>
+
+            <div style="width:100%; text-align:center !important;">
+                <button type="button" class="btnIndex btnSplash positive" onClick="document.location.href='signup.html';">Signup</button>
+                <button type="button" class="btnIndex btnSplash positive2" onClick="document.location.href='login.html';">Login</button>
+                <button type="button" class="btnIndex btnSplash btn-auth btn-facebook" onClick="socialLogin('facebook')">Login with facebook</button>
+                <button type="button" class="btnIndex btnSplash btn-auth btn-google" onClick="socialLogin('google')">Login with google</button>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="notice">
+        <p>Providing us with your details will enable us to provide you with the service of searching for, and paying for the use of trails to ride on.
+       We will NOT give any of your info to anyone, except to the landowner and trail manager of the trails you might purchase permits to.
+        When you pay for a permit with your credit card, Peach Payments and Nedbank will know about this, along with ourselves, the vendor (trail) and your card issuer.</p></div>
+    </div>
+</div>
+<div>
+    <div id="fadex" class="modalDialog"></div>
+    <div id="modalx"><img id="loader" src="images/spinner.gif"/></div>
+    <div class="clear"></div>
+</div>
+
+</body>
+<script src="js/hello.min.js"></script>
+<script src="js/user.js"></script>
+</html>

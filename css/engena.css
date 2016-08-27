@@ -1,0 +1,1253 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Cabin', Arial, sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 1em;
+    background: #003366;
+}
+p {
+	font-size: 1em;
+}
+h1 {
+    font-weight: 700;
+    color: #FFF;
+    font-size: 1.2em;
+    margin-bottom: 5px;
+    border-bottom: 3px solid #FFFFFF;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-size: 1.1em;
+    font-weight: 400;
+    color: #669900;
+}
+h3 {
+	font-size: 1.2em;
+	font-weight: 400;
+	font-style: italic;
+	color: #FFFFFF;
+}
+h4 {
+	font-size: 1em;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.clear {
+    clear: both;
+}
+
+/* LOADING SCREEN */
+.splash {
+    background: url(../images/splash.jpg) #003300 no-repeat;
+    background-position: left bottom;
+    min-height: 480px;
+}
+
+#header {
+    /*height: 125px;*/
+    background: #003300;
+    /*
+    background: -moz-linear-gradient(top, #003300 0%, #5e9100 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, #003300), color-stop(100%, #5e9100));
+    background: -webkit-linear-gradient(top, #003300 0%, #5e9100 100%);
+    background: -o-linear-gradient(top, #003300 0%, #5e9100 100%);
+    background: -ms-linear-gradient(top, #003300 0%, #5e9100 100%);
+    background: linear-gradient(to bottom, #003300 0%, #5e9100 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#003300', endColorstr='#5e9100', GradientType=0);
+    */
+    padding: 8px 1px;
+    width: 98%;
+    float: left;
+}
+
+/* MESSAGES AND SETTINGS MENU AT THE TOP */
+#topmenu {
+    float: right;
+}
+
+/* MAIN MENU */
+ul#menu {
+    list-style: none;
+    padding-left: 0;
+    float: left;
+    width: 100%;
+}
+
+ul#menu li {
+    /*text-indent: 40px;*/
+    padding: 10px 0 10px 37px;
+    color: #FFFFFF;
+    float: left;
+    width: 93%;
+}
+
+ul#menu li a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+ul#menu li a:hover {
+    font-weight: 700;
+}
+
+li[data-type="profile"] {
+    /*background: url(../icons/profile.png) #003300 no-repeat 8px 10px !important;*/
+    background: #003300;
+}
+
+li[data-type="where"] {
+   /* background: url(../icons/where.png) #0e4100 no-repeat 8px 10px !important;*/
+    background: #003300;
+}
+
+li[data-type="trail"] {
+    /*background: url(../icons/pin.png) #295c00 no-repeat 8px 10px !important;*/
+    background: #003300;
+}
+
+li[data-type="payments"] {
+    /*background: url(../icons/payments.png) #3d7000 no-repeat 8px 10px !important;*/
+    background: #003300;
+}
+
+li[data-type="social-accounts"] {
+    /*background: url(../icons/payments.png) #295c00 no-repeat 8px 10px !important;*/
+    background: #003300;
+}
+
+li[data-type="watch"] {
+    /*background: url(../icons/watchme.png) #528500 no-repeat 8px 10px !important;*/
+    background: #003300;
+}
+
+li[data-type="protectme"] {
+    /*background: url(../icons/protectme.png) #5c8f00 no-repeat 8px 10px !important;*/
+    background: #003300;
+}
+
+li[data-type="list"] {
+    /*background: url(../images/list-ingredients-32.png) #003300 no-repeat 8px 10px !important;*/
+    background: #003300;
+}
+
+
+/* SUBMENU */
+ul#submenu {
+    list-style: none;
+    padding-left: 0;
+    width: 100%;
+    float: left;
+}
+
+ul#submenu li {
+    padding: 10px 0 10px 28px;
+    color: #FFFFFF;
+    border-bottom: 1px solid #FFFFFF;
+    width: 93%;
+    float: left;
+}
+
+.up {
+    background-image: url(../images/up.png);
+    background-position: 100% 10px;
+    background-repeat: no-repeat;
+
+}
+
+.down {
+    background-image: url(../images/down.png);
+    background-position: 100% 7px;
+    background-repeat: no-repeat;
+}
+
+ul#submenu li.first {
+/*    background-color: #003300;*/
+}
+
+ul#submenu li.second {
+/*    background-color: #144700;*/
+}
+
+ul#submenu li.third {
+/*    background-color: #295c00;*/
+}
+
+ul#submenu li.fourth {
+/*    background-color: #3d7000;*/
+}
+
+ul#submenu li.fifth {
+/*    background-color: #528500;*/
+}
+
+ul#submenu li.sixth {
+/*    background-color: #003300;*/
+}
+
+ul#submenu li a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+ul#submenu li a:hover {
+    font-weight: 700;
+}
+
+/* ADVERTS SECTION */
+.adverts {
+    width: 468px;
+    height: 60px;
+    margin: 10px auto 0 auto;
+    /*background: #FFF;*/
+}
+
+/* DATA */
+.data {
+    width: 98%;
+    float: left;
+    padding: 4px 0;
+    text-align: left;
+}
+
+.alert {
+    color: #FF0000;
+}
+
+.notice {
+    color: #ffffff;
+    background: #335c33; 
+    font-size: 0.7em;
+    padding: 10px 10px 20px 10px;
+}
+
+
+.profilepic {
+
+    /* BORDER RADIUS HALF OF IMAGE SIZE */
+    border-radius: 100px;
+    -webkit-border-radius: 37px;
+    -moz-border-radius: 37px;
+
+    /*	padding-right: 10px;*/
+}
+
+button {
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border: 0px none #000000;
+    padding: 10px 20px;
+    font-size: 12px;
+    margin-bottom: 5px;
+    width: auto;
+    cursor: pointer;
+}
+
+button.positive {
+    background: #0258ae;
+    border: 1px solid #0258ae;
+    color: #FFFFFF;
+}
+button.positive:hover {
+	border: 1px solid #FFFFFF;
+	background: #335c33;
+	}
+
+
+button.positive2 {
+    background: #669900;
+    border: 1px solid #669900;
+    color: #FFFFFF;
+}
+button.positive2:hover {
+	border: 1px solid #FFFFFF;
+	background: #335c33;
+	}
+
+
+button.negative {
+    background: #ff0000;
+    color: #FFFFFF;
+}
+
+/* Payments */
+#payTable th {
+    background: #335c33;
+    font-size: 0.8em;
+    padding: 5px 0;
+}
+
+#payTable td {
+    border-bottom: 1px solid #FFFFFF;
+}
+
+/* MODAL */
+.modalDialog {
+    position: fixed;
+    overflow: auto;
+    color: #FFFFFF;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 99999;
+    opacity: 0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+}
+
+.modalDialog:target {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modalDialog > div {
+    width: 400px;
+    position: relative;
+    margin: 3% auto;
+    padding: 10px 0 10px 0;
+    border-radius: 10px;
+    background: #fff;
+    /*
+    background: -moz-linear-gradient(#fff, #999);
+    background: -webkit-linear-gradient(#fff, #999);
+    background: -o-linear-gradient(#fff, #999);
+    */
+    background: #669900;
+}
+
+.modalDialog h1 {
+    text-indent: 10px;
+}
+
+.close {
+    background: #ff0000;
+    color: #FFFFFF;
+    line-height: 25px;
+    position: absolute;
+    /*right: -12px;
+    top: -10px;*/
+    text-align: center;
+    width: 24px;
+    text-decoration: none;
+    font-weight: bold;
+    float: right;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    margin-left: -15px;
+    margin-top: -15px;
+}
+
+.close:hover {
+    background: #cc0000;
+}
+
+.form-control {
+    height: 24px;
+}
+
+.myselectBig {
+    padding: 10px;
+    height: 33px;
+    width: 70%;
+    margin-bottom: 8px;
+}
+
+/* SIGNUP FORMS */
+.signup li:first-child, .signup li:last-child {
+    border-bottom: 1px solid #FFFFFF;
+}
+
+.required_notification {
+    color: #FF0000;
+    margin: 5px 0 0 0;
+    display: inline;
+    float: right;
+}
+
+.signup label {
+    width: 150px;
+    margin-top: 3px;
+    display: inline-block;
+    float: left;
+    padding: 3px;
+}
+
+.signup input {
+    height: 20px;
+    width: 150px;
+    padding: 5px 8px;
+    border: none;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+.signup ul {
+    width: 340px;
+    list-style-type: none;
+    list-style-position: outside;
+    margin: 0px;
+    padding: 0px;
+}
+
+.signup li {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    position: relative;
+}
+
+:-moz-placeholder {
+    color: #000000;
+}
+
+::-webkit-input-placeholder {
+    color: #000000;
+}
+
+/*----------------------- 16 Nov 2015 ---------------------------*/
+.container {
+    padding: 0 10px;
+    /*font-size: 0.8em;*/
+    background: #003300;
+}
+
+.body {
+    width: 100%;
+    float: left;
+    margin-bottom: 10px;
+}
+
+.mainContain {
+    width: 45%;
+    margin: 0 auto;
+}
+
+.logo {
+    float: left;
+}
+
+select {
+    padding: 3px 5px;
+    background: #FFF;
+    border: 0;
+    display: block;
+    margin-bottom: 5px;
+}
+
+hr {
+    margin: 5px 0;
+    width: 100%;
+    float: left;
+}
+
+.btnmain {
+    width: 100%;
+    float: left;
+}
+
+.pullLeft {
+    float: left;
+}
+
+.pullRight {
+    float: right;
+}
+
+.mytable {
+    width: 100%;
+    float: left;
+    margin-bottom: 10px;
+}
+
+.bot {
+    margin-bottom: 8px;
+}
+
+.data p {
+    margin-bottom: 5px;
+    width: 100%;
+    float: left
+}
+
+.dataImg {
+    float: left;
+    padding-right: 5px;
+}
+
+/*----------------- splash ------------------*/
+.loginbg {
+    margin: 0 auto;
+    width: 40%;
+    padding: 10px;
+}
+
+.splashBg {
+    background: url(../images/signupbg2.png) #669900 no-repeat left bottom;
+    /*background-size: cover;*/
+    width: 100%;
+    height: 100%;
+    float: left;
+    position: absolute;
+    overflow: auto;
+}
+
+.loginMain {
+    width: 100%;
+    float: left;
+    text-align: center;
+    margin: 20px 0;
+    background: #003300;
+}
+
+.splashlogo {
+    margin-bottom: 15px;
+    background: #003300;
+}
+
+.splashlogo img {
+    max-width: 100%;
+}
+
+.formgroup {
+    width: 100%;
+}
+
+.formLable {
+    color: #FFF;
+    width: 32%;
+    float: left;
+    text-align: left;
+    padding-top: 4px;
+    font-size: 1em;
+}
+
+.formLablex {
+    color: #FFF;
+    width: 35%;
+    float: left;
+    text-align: left;
+    font-size: 16px;
+}
+
+.lableTxt {
+    color: #FFF;
+    width: 32%;
+    float: left;
+    padding-top: 4px;
+    font-size: 14px;
+    text-align: left;
+}
+
+.loglableTxt {
+    color: #FFF;
+    width: 32%;
+    float: left;
+    padding-top: 4px;
+    text-align: left;
+}
+
+.inputForm {
+    padding: 8px;
+    border: 0;
+    border-radius: 3px;
+    width: 65%;
+    float: left;
+    margin-top: 0 !important;
+}
+
+.inputsmForm {
+    padding: 8px;
+    border: 0;
+    border-radius: 3px;
+    width: 25%;
+    float: left;
+    margin-bottom: 6px;
+}
+
+.inputbox {
+    padding: 8px;
+    border: 0;
+    border-radius: 3px;
+    width: 65%;
+    float: right;
+    margin-bottom: 6px;
+}
+
+.btnLogin {
+    /*
+    background: #0258ae;
+    color: #FFFFFF;
+    padding: 6px 25px;
+    font-size: 18px;
+    border-radius: 3px;
+    */
+    float: left;
+    width: auto;
+    cursor: pointer;
+}
+
+
+.btnSplash {
+    /*
+    padding: 10px 40px !important;
+    font-size: 16px !important;
+    margin-left: 5px;
+    cursor: pointer;
+    */
+}
+
+/*----------------- Signup ------------------*/
+.signupbg {
+    background: #003300;
+    margin: 0 auto;
+    width: 55%;
+}
+
+.formgroup em {
+    float: left;
+    width: 3%;
+    color: #CCC;
+    font-style: normal;
+    font-weight: bold;
+    padding-top: 4px;
+}
+
+.proTxt {
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 1.2em;
+    float: left;
+}
+
+.proTxt a {
+    color: #669900;
+    text-decoration: none;
+}
+.proTxt a:hover{
+	color: #0258ae;
+}
+
+.title {
+    /*font-size: 28px;*/
+    color: #FFF;
+    margin-bottom: 10px;
+    font-weight: normal;
+    border-bottom: dotted 1px #ccc;
+    padding-bottom: 10px;
+}
+
+.btnLogin:hover {
+    opacity: 0.8;
+}
+
+.btnIndex:hover {
+    opacity: 0.8;
+}
+
+.capImg {
+    float: left;
+    margin-left: 5px;
+}
+
+.steps {
+    width: 92%;
+    float: left;
+    padding: 5px 15px;
+}
+
+.closeX {
+    position: relative !important;
+}
+
+.placeholder {
+    font-size: 18px;
+}
+
+.dataTab {
+    width: 100%;
+    float: left;
+    color: #FFF;
+}
+
+.dateTab {
+    width: 100%;
+    float: left;
+    color: #FFF;
+    display: none;
+}
+
+.showdiv {
+    display: none;
+}
+
+.mydiv {
+    width: 100%;
+    float: left;
+    height: 200px;
+}
+
+.payTab {
+    width: 100%;
+    float: left;
+    list-style-type: none;
+    border-bottom: solid 1px #FFF;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+.payTab li {
+    font-size: 14px;
+    color: #FFF;
+    padding: 5px 10px !important;
+}
+
+.payLiID {
+    width: 10% !important;
+    float: left !important;
+    padding: 0 !important;
+}
+
+.payLiInfo {
+    width: 42% !important;
+    float: left !important;
+}
+
+.payHead {
+    background: #0258ae;
+    color: #FFF;
+    border: none !important;
+    height: auto !important;
+}
+
+#payMain {
+    width: 100%;
+    float: left;
+    display: none;
+}
+
+@media screen and (max-width: 1024px) {
+    .splashlogo img {
+        width: auto !important;
+    }
+
+    .mainContain {
+        width: 60% !important;
+    }
+
+    .loginbg {
+        width: 60% !important;
+    }
+
+    .signupbg {
+        width: 75% !important;
+    }
+
+    #payMain {
+        display: none !important;
+    }
+
+    #table_view {
+        display: block;
+        
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .mainContain {
+        width: 90% !important;
+    }
+
+    ul#menu li {
+        padding: 10px 0 10px 10% !important;
+        width: 90% !important;
+    }
+
+    .loginbg {
+        width: 75% !important;
+    }
+
+    .signupbg {
+        width: 90% !important;
+    }
+
+}
+
+@media screen and (max-width: 640px) {
+    .mapImg {
+        width: 100%;
+    }
+
+    .dataTab {
+        width: 550px !important;
+        float: left;
+        padding-bottom: 10px;
+    }
+
+    .mytable {
+        width: 100%;
+        overflow: auto;
+        float: left;
+    }
+
+    .signupbg {
+        width: 98% !important;
+    }
+
+    #modalx {
+        left: 30% !important;
+        top: 47% !important;
+    }
+
+    #payMain {
+        display: block !important;
+    }
+
+    #table_view {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 580px) {
+    .signupbg {
+        width: 86% !important;
+    }
+
+    .formLable {
+        width: 100% !important;
+        margin-bottom: 3px !important;
+    }
+
+    .inputForm {
+        width: 100% !important;
+        margin-top: 0 !important;
+    }
+
+    .formgroup em {
+        display: none !important;
+    }
+
+    .disp {
+        display: none;
+    }
+
+    .proTxt {
+        float: right !important;
+        margin-top: 15px !important;
+    }
+
+    .btnwdth {
+        width: auto !important;
+        margin-top: 10px !important;
+    }
+
+}
+
+@media screen and (max-width: 480px) {
+    .mainContain {
+        width: 98% !important;
+    }
+
+    .loginbg {
+        width: 98% !important;
+    }
+
+    .modalDialog > div {
+        width: 340px !important;
+    }
+
+    .signupbg {
+        width: 96% !important;
+    }
+
+    .modalDialog h1 {
+        text-indent: 10px !important;
+        font-size: 22px !important;
+    }
+
+}
+
+@media screen and (max-width: 360px) {
+    .mainContain {
+        width: 98% !important;
+    }
+
+    ul#menu li {
+        padding: 10px 0 10px 12% !important;
+        width: 88% !important;
+    }
+
+    option {
+        white-space: pre-line;
+    }
+
+    select {
+        width: 98% !important;
+    }
+
+    .loginbg {
+        width: 97% !important;
+    }
+
+    .modalDialog > div {
+        width: 315px !important;
+    }
+
+    .inputForm {
+        width: 97% !important;
+        margin-top: 0 !important;
+    }
+
+    .formgroup em {
+        display: none !important;
+    }
+
+    .adverts {
+        width: 250px !important;
+    }
+
+    .error {
+        float: left !important;
+    }
+
+    #contactno {
+        width: 70% !important;
+        margin-bottom: 5px !important;
+        margin-top: 0 !important;
+    }
+
+    #countrycode {
+        width: 25% !important;
+        margin-bottom: 5px !important;
+        margin-top: 0 !important;
+    }
+
+    .inputbox {
+        width: 97% !important;
+    }
+
+    .lableTxt {
+        width: 38%;
+    }
+
+    #modalx {
+        left: 30% !important;
+        top: 38% !important;
+    }
+
+    #modalx {
+        left: 30% !important;
+        top: 38% !important;
+    }
+
+    #profilepic1 {
+        margin-left: 10% !important;
+    }
+
+}
+
+@media screen and (max-width: 415px) {
+    .costtab {
+        width: 100%;
+        clear: both;
+    }
+
+    .module {
+        width: 30% !important;
+        clear: both;
+    }
+
+}
+
+#edit_profile #contactno {
+    width: 43%;
+    margin-bottom: 5px !important;
+    margin-top: 0 !important;
+}
+
+#edit_profile #countrycode {
+    width: 15%;
+    margin-bottom: 5px !important;
+    margin-top: 0 !important;
+}
+
+#profilepic1 {
+    margin-left: 20%;
+}
+
+.error {
+    color: #F00;
+    float: right;
+    font-size: 14px;
+    text-align: left;
+    width: 65%;
+    font-weight: bold;
+    margin-bottom: 2px;
+    margin-top: 2px;
+}
+
+#error_span {
+    color: #FF0000;
+    float: right;
+    font-size: 14px;
+    text-align: left;
+    width: 65%;
+    font-weight: bold;
+    margin-bottom: 2px;
+    margin-top: 2px;
+}
+
+.msg {
+    color: #BFD29E;
+    float: right;
+    font-size: 16px;
+
+    text-align: center;
+    width: 100%;
+    font-weight: bold;
+}
+
+.floatright {
+    float: right;
+    margin-right: 5px;
+}
+
+.profileinput {
+    width: 95%;
+    clear: both;
+    height: 45px;
+}
+
+#profile_photo-error {
+    width: 100%;
+    float: left !important;
+    font-size: 12px;
+}
+
+.topmargin {
+    margin-top: 5px;
+}
+
+.favleft {
+    width: 10%;
+    float: left;
+    padding-top: 3px;
+    clear: left;
+}
+
+.favright {
+    width: 89%;
+    float: right;
+    padding-top: 6px;
+    clear: right;
+}
+
+#fadex {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ababab;
+    z-index: 1001;
+    -moz-opacity: 0.8;
+    opacity: .70;
+    filter: alpha(opacity=10);
+}
+
+#modalx {
+    background: none;
+    display: block;
+    height: 110px;
+    left: 45%;
+    overflow: auto;
+    padding: 12px 9px 0;
+    position: fixed;
+    text-align: center;
+    top: 45%;
+    width: 112px;
+    z-index: 1002;
+}
+
+#edit_email-error, #profile_name-error, #countrycode-error {
+    width: 60% !important;
+    float: right !important;
+    text-align: left !important;
+}
+
+.textbox {
+    width: 60% !important;
+    float: right !important;
+    text-align: left !important;
+    padding: 6px;
+    border: 0;
+    border-radius: 3px;
+}
+
+.margin-bot {
+    margin: 6px !important;
+    width: 100%;
+    clear: both;
+    height: 39px;
+}
+
+#trail_info_div {
+    background-color: #195401;
+}
+
+/*#trail_info_div .data{ display:none; }*/
+.costtab {
+    width: 100%;
+    clear: both;
+}
+
+.module {
+    width: 20%;
+    margin: 5px 0 5px 0;
+    font-size: 0.8em;
+}
+
+input[type=radio].css-checkbox {
+    position: absolute;
+    z-index: -1000;
+    left: -1000px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+}
+
+input[type=radio].css-checkbox + label.css-label {
+    padding-left: 55px;
+    height: 24px;
+    display: inline-block;
+    line-height: 50px;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    font-size: 50px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+input[type=radio].css-checkbox:checked + label.css-label {
+    background-position: 0 -24px;
+}
+
+label.css-label {
+    background-image: url(../images/chkbox.png);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#payTable td {
+    padding-left: 5px;
+}
+
+#payTable th {
+    padding-left: 5px;
+    text-align: left;
+}
+
+#topmenu1 {
+    float: right;
+
+    position: relative;
+}
+
+.txt {
+    background: url(../images/notification_small.png) no-repeat top left;
+    font-size: xx-small;
+    position: absolute;
+    top: 0;
+    left: -6px;
+    height: 18px;
+    width: 19px;
+    color: #fff;
+    padding-left: 3px;
+    line-height: 13px;
+    display: none;
+}
+
+.passselect {
+    cursor: pointer !important;
+    z-index: 9999 !important;
+    margin-bottom: 5px;
+
+}
+
+.passselect:hover {
+    cursor: pointer !important;
+    color: #669900 !important;
+
+    z-index: 9999 !important;
+}
+
+#pass_photo-error {
+    float: left !important;
+    width: 90% !important;
+}
+
+#modal_payment > div {
+    width: 600px;
+}
+.modalDialog ul#submenu li.first {
+    color: #000;
+    padding: 20px 5%;
+    width: 90%;
+}
+.payment-amount {
+    text-align: right;
+    margin-right: 30px;
+    font-weight: bold;
+    display: none;
+}
+.payment-status {
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    position: relative; top: 50%;
+    transform: translateY(-50%);
+}
+#peachIframe {
+    width: 100%;
+    display: none;
+}
+.social-account {
+    padding: 10px 0;
+    display: table;
+}
+.social-account .label, .social-account .profile, .social-account .connect-button {
+    display: table-cell;
+    vertical-align: middle;
+}
+ul#menu .social-account .profile a {
+    text-decoration: underline;
+    color: #FC4C02;
+    font-weight: 700;
+}
+#social-accounts .error {
+    color: #F00;
+    width: 100%;
+}
+:focus {
+    outline: none !important;
+}

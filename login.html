@@ -1,0 +1,89 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Engena</title>
+    <script type="text/javascript">
+        var access_token = sessionStorage.getItem("access_token");
+        if (access_token != null && access_token != '') {window.location = "myprofile.html";}
+    </script>
+    <link href='https://fonts.googleapis.com/css?family=Cabin:400italic,400,700,700italic' rel='stylesheet' type='text/css'>
+    <link href="css/engena.css" rel="stylesheet" type="text/css"/>
+    <link href="css/auth-buttons.css" rel="stylesheet" type="text/css"/>
+    <script src="js/ga.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.validate.min.js"></script>
+</head>
+<body onLoad="display_msg();">
+<form name="login_frm" id="login_frm">
+    <div class="splashBg">
+        <div class="loginbg">
+            <div class="loginMain">
+                <div class="splashlogo"><img src="images/logo_square.png" border="0"/></div>
+                <div class="container">
+                    <div class="formgroup">
+
+                        <span class='msg'></span>
+                        <h2 class="title">Login Here</h2>
+                        <div class="margin-bot">
+                            <label class="loglableTxt">Username</label>
+                            <input type="text" class="inputbox" name="username" id="username" placeholder="Username" tabindex="1" required/>
+                        </div>
+                        <div class="margin-bot">
+                            <label class="loglableTxt">Password</label>
+                            <input type="password" class="inputbox" name="password" id="password" placeholder="Password" tabindex="2"
+                                   onkeypress="return myscript(event,this)" required/>
+                        </div>
+                        <div class="margin-bot">
+                            <label class="loglableTxt">Remember Me</label>
+                            <input type="checkbox" class="inputbox" name="remember_me" id="remember_me" tabindex="3" style="text-align:left;"/>
+                        </div>
+                        <div class="btnmain btnwdth">
+                            <label class="formLable disp">&nbsp;</label>
+                            <button type="button" class="positive" tabindex="3" onClick="login();">Login</button>
+                        </div>
+                        <span class="formLable" id="error_span" style="width: 100% !important; text-align:right;"></span>
+                        
+                        <!-- SOCIAL MEDIA LOGINS.... fb, strava etc etc -->
+                        
+                        <!--
+                        <div class="btnmain btnwdth">
+                            <label class="formLable disp">&nbsp;</label>
+                            <button type="button" class="btnIndex btnSplash btn-auth btn-facebook" onClick="socialLogin('facebook')">Login with facebook</button><br><br>
+                            <label class="formLable disp">&nbsp;</label>
+                            <button type="button" class="btnIndex btnSplash btn-auth btn-google" onClick="socialLogin('google')">Login with google</button>
+                        </div>
+                        -->
+
+                        <label class="formLable disp">&nbsp;</label>
+                        <!-- <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button> -->
+                        <!-- <p><a href="#" data-provider="facebook" onClick="logInWithFacebook()">Log In with the Facebook</a></p> -->
+                        <!-- <a href="#" class="btn-auth btn-facebook" data-provider="facebook" onClick="logInWithFacebook()">Login with facebook</a>
+                        <a href="#" class="btn-auth btn-google" data-provider="google" onClick="logInWithGoogle()">Login with google</a> -->
+                        <p class="proTxt" style="width: 100% !important; text-align:right;">Forgot Password? <a href="forgotpass.html"> Reset</a></p>
+                        <p class="proTxt" style="width: 100% !important; text-align:right;">New User? <a href="signup.html"> Register Here</a></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <div id="fadex" class="modalDialog"></div>
+    <div id="modalx"><img id="loader" src="images/spinner.gif"/></div>
+    <div class="clear"></div>
+</div>
+</body>
+<script src="js/hello.min.js"></script>
+<script src="js/user.js"></script>
+<script type="text/javascript">
+    function myscript(event, i) {
+        if (event.keyCode == 13) {
+            login();
+        }
+    }
+</script>
+</html>

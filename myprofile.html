@@ -1,0 +1,726 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <title>Engena</title>
+    <link href='https://fonts.googleapis.com/css?family=Cabin:400italic,400,700,700italic' rel='stylesheet' type='text/css'>
+<!--    <link rel="stylesheet" href="css/jquery-ui.css">-->
+    <link href="css/engena.css" rel="stylesheet" type="text/css"/>
+    <script src="js/common_func.js"></script>
+    <script src="js/ga.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.validate.min.js"></script>
+    <script src="js/hello.min.js"></script>
+    <script src="js/hello.strava.js"></script>
+    <script src="js/user.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/mask.js"></script>
+    <script src="js/jquery-ui.js"></script>
+
+    <script type="text/javascript">
+        $.validator.addMethod("onlyimg", function (value, element) {
+            var ext = value.substring(value.lastIndexOf('.') + 1).toLowerCase();
+            var extx = ext.trim().toLowerCase();
+            if (value && value.trim() != "") {
+                if (extx == 'jpeg' || extx == 'jpg' || extx == 'png') return true;
+                else return false;
+            }
+            else return true;
+        }, "Please select (jpeg/jpg/png) file only.");
+
+        $.validator.addMethod("check_phoneno", function (extx, element) {
+            var value = $("#contactno").val();
+            var str = extx + " " + value;
+            str = removex(str);
+
+            if (value != '' && extx != '') {
+                console.log(extx.length + "  -- " + removex(value).length)
+                if ((extx.length < 1 || extx.length > 3) || (removex(value).length < 6 || removex(value).length > 14)) return false;
+                else return true;
+            }
+            else return false;
+        }, "&uarr; Invalid Phone number");
+
+        $(document).ready(function () {
+
+
+            $(".toggle_button").click(function () {
+                if ($(this).parent().hasClass("up")) {
+                    $(this).parent().find(".data").slideUp('slow');
+                    $(this).parent().removeClass("up").addClass("down");
+                }
+                else if ($(this).parent().hasClass("down")) {
+                    $(".up").find(".data").slideUp('slow');
+                    $(".up").removeClass("up").addClass("down");
+                    $(this).parent().removeClass("down").addClass("up");
+                    $(this).parent().find(".data").slideDown('slow');
+                }
+            });
+        });
+        $(function () {
+            $("#dayPassDate").datepicker({
+                dateFormat: 'yy-mm-dd', showOn: "button",
+                buttonImage: "images/calendar-view-week-icon.png",
+                buttonImageOnly: true,
+                showOn: "both",
+                minDate: -0
+            });
+            $('.ui-datepicker-trigger').css({position: 'relative', left: '-28px', top: '4px'});
+        });
+    </script>
+
+    <script src="js/dw_rotate_banner.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+    // long name for global variable
+    var dw_banner_rotator = {
+        id: 'banner_rotator', // id of element that displays rotating content
+        speed: 4500, // default 4500
+        bPause: true, // pause/resume onmouseover/out
+        bRand: true, // random rotation
+        // banner content goes here
+        // commas separate items, but no comma after last item
+        content: ['<a href="http://www.versussocks.co.za/" target="_blank"><img src="images/banners/versus.jpg"/></a>',
+            '<a href="http://www.eavesdrop.co.za" target="_blank"><img src="images/banners/eavesdrop.jpg"/></a>',
+            '<a href="http://bikinginthebosch.co.za/" target="_blank"><img src="images/banners/bib.jpg"/></a>',
+            '<a href="http://www.itguys.co.za/" target="_blank"><img src="images/banners/itguys.jpg"/></a>'
+        ]
+    }
+
+    DYN_WEB.Event.domReady( function() {
+        new DYN_WEB.Banner_Rotator(dw_banner_rotator);
+    });
+    </script>
+
+</head>
+
+<body onLoad="check_session();load_profile_Data();">
+<div class="splashBg">
+    <div class="mainContain">
+        <div id="header">
+            <div class="logo"><a href="index.html"><img src="images/logo.png" alt="Engena" border="0"/></a></div>
+            <div id="topmenu"><!--<img src="images/settings.png" />--><a href="mailto:info@engena.co.za"><img src="images/messages.png" alt=""/></a></div>
+            <div id="topmenu1">
+            	<!--<a href="#pass_photo_section"><img src="icons/camera.png" title="You have pass with missing photos"/> </a>-->
+                <div class="txt"></div>
+            </div>
+        </div>
+
+
+        <div class="body">
+            <ul id="menu">
+                <li data-type="profile"><a href="#"><h1>My Profile</h1></a>
+                    <div class="data">
+                        <div class="pullLeft">
+                            <span class="formLable" id="name_span" style="width: 100% !important; text-align:left;"></span>
+                            <br/>
+                            <span class="formLable" id="email_span" style="width: 100% !important; text-align:left;"></span>
+                            <br/>
+                            <span class="formLable" id="contact_span" style="width: 100% !important; text-align:left;"></span>
+                        </div>
+
+                        <div class="pullRight">
+                            <img id="profilepic" src="" class="profilepic"/></div>
+                    </div>
+
+                    <div class="btnmain">
+                        <a href="#modal_Profile">
+                            <button type="button" class="positive">Edit my Profile</button>
+                        </a>
+
+                    </div>
+                </li>
+                <li data-type="where"><h1>Trails</h1>
+                    <div class="data">
+                    	<div class="notice">
+                        	<p>Please select where you would like to ride.</p>
+                        </div>
+                        <!-- ACTIVITY STARTS -->
+                        <form id="form2" name="form2" method="post" action="" style="display:none;">
+                            <select name="where_Activity" id="where_Activity" onChange="getReserves()">
+                                <option value="4" selected="selected">Bike</option>
+                            </select>
+                        </form>
+
+                        <!--  ACTIVITY ENDS -->
+
+                    </div>
+                    
+                    <!-- TOWN -->
+                    
+                    <div class="data">
+                        <form id="form4" name="form4" method="post" action="">
+                            <select name="where_Town" id="where_Town" onChange="getReserves()" class="inputForm" style="width:168px !important;">
+                            </select><span id="regionerror" class="error" style="float:left !important; width:75% !important;"></span>
+                        </form>
+                   </div>
+                    
+                    <!-- RESERVE -->
+                    
+                    <div class="data">
+                        <form id="form5" name="form5" method="post" action="">
+                            <select name="where_Trail" id="where_Trail" onChange="getCosts(this.value);" class="inputForm"
+                                    style="width:168px !important;">
+                                <option value=''>Select Reserve</option>
+                            </select><span id="dayPassDate_error" class="error" style="float:left !important; width:75% !important;"></span>
+                        </form>
+                    </div>
+			<!--
+                    <div class="mytable" id="dataTabx">
+
+                    </div>
+
+                    <div class="datetab">
+
+
+                        <a href="#">Select Date For Day Pass</a>
+                        <div class="data">
+                            <input type="text" name="dayPassDate" id="dayPassDate" class="inputsmForm" style="width:180px;"/>
+
+                        </div>
+                    </div>
+
+                    <div class="btnmain">
+                        <button type="button" class="positive" onClick="validateCart()">Pay Now</button>
+                        </a>
+
+                        <hr/>
+                    </div>
+                    
+
+-->
+                <!--<li id="trail_info_div">
+                    <div class="toggle_button">Additional Trail information</div>-->
+
+                    <div class="data" style="padding-top:10px;">
+
+                        <p>
+                            <select name="where_Trail2" id="where_Trail2" onChange="getTrailInfo(this.value)" class="inputForm" style="width:168px !important;">
+                                <option value=''>Select Trail</option>
+                            </select>
+                        <div id="reserveerror" class="error" style="float:left; width:100%;"></div>
+
+                        <div id="trailinfo" style="float:left; width:100%;"></div>
+<!--
+                        <a href="#modal_Directions"><img src="images/directions.png" alt="" width="25" height="25" border="0"/></a><br/>
+-->
+                        </p>
+                        <hr/>
+                <!--    </div>
+                </li>-->
+                        </div>
+
+                    <div id="modal_PaymentRiders_pay" class="modalDialog">
+                        <div>
+                            <ul id="submenu">
+                                <li class="first"><h1>Payments</h1>
+                                    <div class="data">
+                                        <br>
+                                        <p>Thank you for your payment of R <span id="total_amt">00.00</span></p><br><br>
+                                        <p><span class="dataImg"><img src="images/camera.png" width="25"
+                                                                      height="25"/></span> Please add friends for verification purposes.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                            <a href="#close" title="Close" class="close">X</a>
+                        </div>
+                    </div>
+
+
+                    <div id="payment_hostory_repeat" class="modalDialog">
+                        <div>
+                            <ul id="submenu">
+                                <li class="toggle fourth ">
+                                    <div>My Payments</div>
+
+                                    <div class="data" id="pay_history2">
+                                    </div>
+                                </li>
+                            </ul>
+                            <a href="#close" title="Close" class="close">X</a>
+                        </div>
+                    </div>
+
+                    <!--
+                       <div class="data modalDialog" id="modal_PaymentRiders_pay" >
+                         <h1>Payments</h1>
+                         <p>Thank you for your payment of R <span id="total_amt">00.00</span></p>
+                         <p><span class="dataImg"><img src="images/camera.png" width="25" height="25" /></span> Please add friends for  verification purposes.</p>
+                          </div>-->
+
+                </li>
+
+
+
+
+<!--
+                <li data-type="trail"><a href="#">On this trail</a>
+                    <div class="data">
+                        </br>
+                        Live tracking, coming soon.
+                        </br>
+                    </div>
+                </li>
+-->
+
+                <li data-type="social-accounts" id="social-accounts">
+                    <a href="#social-accounts"><h1>Social Accounts</h1></a>
+                    <div class="data">
+                        <div class="social-account">
+                            <span class="label">strava.com &nbsp;&nbsp;</span>
+                            <span class="profile" v-if="(typeof accounts.strava !== 'undefined')">
+                                -  connected to
+                                <a target="_blank" href="http://strava.com/athletes/{{ accounts.strava.provider_id }}">
+                                    {{ accounts.strava.full_name }}
+                                </a>
+                            </span>
+                            <a class="connect-button" v-else href="#" onClick="socialConnect('strava')"><img src="images/strava-connect.png"></a>
+                        </div>
+                        <div class="error" >{{ accounts.error }}</div>
+                    </div>
+                </li>
+
+                <!-- Payments -->
+                
+                <!--
+                <li data-type="payments"><h1>Payments</h1>
+                    <div class="data">
+                        <h2>Active Passes</h2>
+                        <div id="payMain">
+
+                        </div>
+
+
+                        <div class="mytable" id="table_view">
+                            <table cellpadding="0" cellspacing="1" id="payTable" class="dataTab">
+                                <thead>
+                                <tr>
+                                    <th width="12%">Id</th>
+                                    <th width="41%">&nbsp;</th>
+                                    <th width="20%">Date</th>
+                                    <th width="13%">Cost</th>
+                                    <th width="14%">&nbsp;</th>
+                                </tr>
+                                </thead>
+                                <tbody id="payment_made_rows">
+
+                                </tbody>
+
+                                <tr>
+                                    <td colspan="5" align="right">
+                                        <a href="#payment_hostory_repeat" style="float:left;padding-top:5px;">Historic Payments</a>
+                                        <a href="#"><img src="images/previous.png" width="25" height="25" border="0" onClick="reder_payment_made('previous')"/></a>
+                                        <a href="#"><img src="images/next.png" alt="" width="25" height="25" border="0" onClick="reder_payment_made('next')"/></a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </li>
+                -->
+                
+<!--
+                <li data-type="watch"><a href="#modal_Watch">Watch me ride</a></li>
+                <li data-type="protectme"><a href="#modal_Protect">Protect me</a></li>
+-->
+            </ul>
+            <div class="clear"></div>
+            <!-- ADVERT -->
+            <div class="adverts" id="banner_rotator"></div>
+            <div class="clear"></div>
+            <!-- MODALS -->
+            <!-- Profile Modal -->
+
+            <div id="modal_Profile" class="modalDialog">
+                <div>
+
+                    <ul id="submenu">
+
+                        <li class="first"><h1>My Profile</h1>
+                            <div class="data">
+                                <form  id="edit_profile"> <!--onsubmit="edit_profile_Data()" / form validate in js/user.js file -> find by form id  -->
+                                    <a href="#"><img src="" id="profilepic1" border="0" class="profilepic" style="margin-left:70px;"/> </a>
+                                    <div class="profileinput" style="padding-top:13px !important;">
+                                        <label class="lableTxt">Profile Name </label>
+                                        <input name="profile_name" type="text" id="profile_name" value="" class='textbox floatright' size="30" tabindex='1' required/>
+                                    </div>
+                                    <div class="profileinput">
+                                        <label class="lableTxt">Email Address </label>
+                                        <input name="edit_email" type="email" id="edit_email" value="" class='textbox floatright' size="30" tabindex='2' required/>
+                                    </div>
+                                    <div class="profileinput">
+                                        <label class="lableTxt">Contact No.</label>
+                                        <input class="textbox " name="contactno" id="contactno" tabindex='4' placeholder="Contact Number" type="text" maxlength="14" required>
+                                    </div>
+
+
+                                    <div class="profileinput">
+                                        <label class="lableTxt">New Password</label>
+                                        <input class="textbox"  name="new_pass" id="new_pass"  placeholder="New Password" type="password" maxlength="45" required>
+                                    </div>
+
+                                    <div class="profileinput">
+                                        <label class="lableTxt">Confirm</label>
+                                        <input class="textbox " name="conf_pass" id="conf_pass"  placeholder="Confirm Password" type="password" maxlength="45" required>
+                                    </div>
+
+                                    <div class="profileinput">
+                                        <p style="text-align: center" id="up_data_error" class="error">
+                                            <script>
+                                                var profile_update_m = sessionStorage.getItem("profile_update_m");
+                                                sessionStorage.removeItem("profile_update_m");
+                                                if (profile_update_m != null && profile_update_m != '') {alert(profile_update_m);}
+                                            </script>
+                                        </p>
+                                    </div>
+
+
+                                    <div class="profileinput">
+                                        <button type="submit" class="positive floatright"  tabindex='5'> <!-- onClick="edit_profile_Data()" -->
+                                        	Update Profile
+                                        </button>
+                                        <a href="#modal_profilephoto">
+                                            <button type="button" class="positive"  tabindex='6'>Update Profile Photo</button>
+                                        </a>
+
+                                    </div>
+                                </form>
+                            </div>
+
+                        </li>
+                        <li class="toggle second down" id="favourites_div">
+                            <div class="toggle_button">My Favourites</div>
+                            <div class="data showdiv">
+                                <div class="notice">
+                                	<p>Here you will be able to manage your favourite trails. </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="toggle third down">
+                            <div class="toggle_button">Subscriptions</div>
+                            <div class="data showdiv">
+                                <div class="notice">
+                                	<p>Your current valid day - and yearpasses goes here. </p>
+                                </div>
+                                <div class="favright"></div>
+                            </div>
+                        </li>
+                        <li class="toggle fourth down">
+                            <div class="toggle_button">My Payments</div>
+                            <div class="data showdiv" id="pay_history">
+                            <div class="notice">
+                                	<p>See a complete list of your Payment history, including passes transferred to friends and family. </p>
+							</div>
+                            </div>
+                        </li>
+
+
+                        <li class="toggle fifth down">
+                            <div class="toggle_button">Friends</div>
+                            <div class="data showdiv">
+                                <div class="notice">
+                                	<p>Manage your friends and family here, to quickly invite for a ride, or to buy permits for them. </p>
+								</div>
+							</div>
+                        </li>
+                    </ul>
+                    <a href="#close" title="Close" class="close">X</a>
+                    <div class="clear"></div>
+                </div>
+            </div>
+
+
+            <!-- Multipass Country Modal -->
+            <div id="modal_profilephoto" class="modalDialog">
+                <div>
+                    <ul id="submenu">
+                        <li class="first">Upload Profile photo
+                            <div class="data">
+                                <form id="photo_form">
+                                    <input type="file" name="profile_photo" id="profile_photo" class="onlyimg" style="float:left;" required/>
+                                    <button type="button" class="positive" onClick="load_photo()" style="float:right;">Upload Photo</button>
+                                </form>
+                            </div>
+                        </li>
+                    </ul>
+                    <a href="#close" title="Close" class="close">X</a>
+                </div>
+            </div>
+
+            <!-- Multipass Country Modal -->
+            <div id="modal_MultipassCountry" class="modalDialog">
+                <div>
+                    <ul id="submenu">
+                        <li class="first up">Multitrail Passes (Country)
+                            <div class="data">
+                                <p>There are 50 multitrail passes in South Africa</p>
+                            </div>
+                        </li>
+                        <li class="second down">Province / State</li>
+                        <li class="third down">City / Town</li>
+                    </ul>
+                    <a href="#close" title="Close" class="close">X</a>
+                </div>
+            </div>
+
+            <!-- Multipass Province/State Modal -->
+            <div id="modal_MultipassProvince" class="modalDialog">
+                <div>
+                    <ul id="submenu">
+                        <li class="first up">Multitrail Passes (Province)
+                            <div class="data">
+                                <p>There are 10 multitrail passes in the Western Cape</p>
+                            </div>
+                        </li>
+                        <li class="second down">Country</li>
+                        <li class="third down">City/Town</li>
+                    </ul>
+                    <a href="#close" title="Close" class="close">X</a>
+                </div>
+            </div>
+
+            <!-- Multipass City / Town Modal -->
+            <div id="modal_MultipassCity" class="modalDialog">
+                <div>
+                    <ul id="submenu">
+                        <li class="first up">Multitrail Passes (City/Town)
+                            <div class="data">
+                                <p>There are 2 multitrail passes in the Stellenbosch</p>
+                            </div>
+                        </li>
+                        <li class="second down">Country</li>
+                        <li class="third down">Province</li>
+                    </ul>
+                    <a href="#close" title="Close" class="close">X</a>
+                </div>
+            </div>
+
+
+            <div id="modal_payment" class="modalDialog">
+                <div>
+                    <ul id="submenu">
+                        <li class="first">
+                            <h1 class="payment-amount">Amount: <span id="amount"></span> ZAR</h1>
+                            <div id="dropin-container"></div>
+                        </li>
+                    </ul>
+                    <a href="#close" title="Close" class="close">X</a>
+                </div>
+            </div>
+
+
+            <div id="modal_payment_message" class="modalDialog">
+                <div>
+                    <ul id="submenu">
+                        <li class="first">
+                            <div class="data" id="payment_div">
+
+                                <br>
+                            </div>
+                        </li>
+                    </ul>
+                    <a href="#close" title="Close" class="close">X</a>
+                </div>
+            </div>
+
+            <div id="modal_PaymentRiders" class="modalDialog">
+                <div>
+                    <h1>Licensed Rider </h1>
+                    <ul id="submenu">
+                        <li class="first " style=" padding: 0 !important;   width: 100% !important ;">
+                            <div class="data">
+
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+                                    <tr>
+                                        <td width="100%" height="40px;" align="center" style=" color:#FFF;"><span id="resname"
+                                                                                                                  style=" text-indent: 10px; "></span> - <span
+                                                id="respdate" style=" text-indent: 10px;"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center" height="40px;"><img src="images/profile_pic99.jpg" width="200" height="200" id="rider_photo"
+                                                                               class="profilepic"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center" height="40px;" style=" color:#FFF;">#<span id="dpassid">-</span></td>
+                                    </tr>
+                                </table>
+                                <hr>
+                                <h4 style="text-indent:10px;"> Update/Upload Photo</h4>
+                                <form id="pass_form_rider">
+                                    <input type="hidden" name="passId_hidden" id="passId_hidden" class="passId_hidden"/><br>
+                                    <input type="file" name="pass_photo_rider" id="pass_photo_rider" class="onlyimg inputForm" style="float:left;" required/>
+                                    <br>
+                                    <button type="button" class="btnLogin" onClick="load_pass_photo('rider')" style="float:right; border:#fff 2px solid;">Upload
+                                    </button>
+                                </form>
+                            </div>
+                        </li>
+                    </ul>
+                    <a href="#close" title="Close" class="close" style="margin-top: -50px !important;">X</a>
+                </div>
+            </div>
+
+
+            <!-- Directions Modal -->
+            <div id="modal_Directions" class="modalDialog">
+                <div>
+                    <a href="#close" title="Close" class="close closeX">X</a>
+
+                    <div class="container">
+                        Directions is coming soon.
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+            </div>
+
+            <!-- Directions Modal -->
+            <div id="modal_Favourites" class="modalDialog">
+                <div>
+                    <a href="#close" title="Close" class="close closeX">X</a>
+
+                    <div class="container">
+                        Favourites is coming soon.
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+            </div>
+
+
+            <div id="modal_Watch" class="modalDialog">
+                <div>
+                    <a href="#close" title="Close" class="close closeX">X</a>
+
+                    <div class="container">
+                        Watch me ride, Coming Soon
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+            </div>
+
+
+            <div id="modal_Protect" class="modalDialog">
+                <div>
+                    <a href="#close" title="Close" class="close closeX">X</a>
+
+                    <div class="container">
+                        Protect me, Coming Soon
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+            </div>
+
+            <!-- Route Profile Modal -->
+            <div id="modal_RouteProfile" class="modalDialog">
+                <div>
+                    <a href="#close" title="Close" class="close closeX">X</a>
+                    <h1>Upper Canary</h1>
+                    <div class="container">
+                        <img src="images/routeprofile.jpg"/>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<div id="pass_photo_section" class="modalDialog">
+    <div>
+        <ul id="submenu">
+            <li class="first" data-type="list"><h3> &nbsp; &nbsp; Passes With Missing Photos </h3>
+                <div class="data">
+                    <div id="missing_photo">
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <a href="#close" title="Close" class="close">X</a>
+    </div>
+</div>
+
+
+<div id="missphotosprompt" class="modalDialog">
+    <div>
+        <ul id="submenu">
+            <li class="second"><h3>Upload Pass photo</h3>
+                <div class="data"><br>
+                    <p> You have <span id="pcnt"></span> Passes missing photos. <br>
+                        <div style="float:left;padding-top:3px;">Click &nbsp;</div>
+                        <div style="float:left;"><a href="#pass_photo_section"><img src="images/camera.png"></a></div>
+                        <div style="float:left;padding-top:3px;">&nbsp; to upload photos.</div>
+                    </p>
+
+                </div>
+            </li>
+        </ul>
+        <a href="#close" title="Close" class="close">X</a>
+    </div>
+</div>
+
+<div id="modal_pass_photo" class="modalDialog">
+    <div>
+        <ul id="submenu">
+            <li class="second"><h3>Upload Pass photo</h3>
+                <div class="data"><br>
+                    <p>&nbsp;&nbsp;<span id="passId_reserv"> </span> - <span id="passId_date"></span></p>
+                    <form id="pass_form_missing">
+                        <input type="hidden" name="passId_hidden" id="passId_hidden"/><br>
+                        <input type="file" name="pass_photo_missing" id="pass_photo_missing" class="onlyimg inputForm" style="float:left;" required/> <br>
+                        <button type="button" class="btnLogin" onClick="load_pass_photo('missing')" style="float:right; border:#fff 2px solid;">Upload Photo
+                        </button>
+
+                    </form>
+                </div>
+            </li>
+        </ul>
+        <a href="#close" title="Close" class="close">X</a>
+    </div>
+</div>
+
+<div>
+    <div id="fadex" class="modalDialog"></div>
+    	<div id="modalx"><img id="loader" src="images/spinner.gif"/></div>
+    <div class="clear"></div>
+</div>
+<script>
+
+    $("#show").click(function () {
+        $("mydiv").show();
+
+
+    });
+    $("#hide").click(function () {
+        $("showdiv").hide();
+    });
+
+    var wpwlOptions = {
+        style: "card",
+        paymentTarget: "peachIframe",
+        shopperResultTarget: "peachIframe",
+        onReadyIframeCommunication: function() {
+            closeModal();
+            $(".payment-amount").show();
+            $("#modal_payment").show();
+            location.href = "#modal_payment";
+        },
+        onAfterSubmit: function() {
+            setTimeout(function() {
+                $(".wpwl-container-card").hide();
+                $(".payment-amount").hide();
+                $("#peachIframe").show();
+                $(".spinner").remove();
+            }, 5000);
+        },
+    };
+
+</script>
+<script src="js/social_accounts.js"></script>
+</body>
+</html>
